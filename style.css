@@ -8,11 +8,6 @@
   --transissionDuration: 0.3s;
 }
 
-/* Link to same page will scroll */
-html {
-  scroll-behavior: smooth;
-}
-
 h1,
 h2,
 h3,
@@ -21,7 +16,8 @@ a {
   color: white;
 }
 
-h1 {
+h1,
+h2 {
   font-family: var(--headerFont), "Arial";
 }
 
@@ -144,6 +140,7 @@ footer h3 {
   }
   main {
     background-attachment: unset;
+    background-repeat: repeat-y;
   }
   video {
     border-radius: 10px;
