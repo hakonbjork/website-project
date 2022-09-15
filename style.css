@@ -1,0 +1,145 @@
+/* Variables */
+:root {
+  --headerFont: "Karla";
+  --paragraphFont: "Mukta";
+  --backgroundColor: rgb(0, 2, 36);
+  --buttonColor: #a8c686;
+}
+
+/* Link to same page will scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+h1,
+h2,
+h3,
+p,
+a {
+  color: white;
+}
+
+h1 {
+  font-family: var(--headerFont), "Arial";
+}
+
+p {
+  font-family: var(--paragraphFont), "Times New Roman";
+}
+
+header {
+  background-color: var(--backgroundColor);
+  overflow: auto;
+}
+
+header img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 70%;
+  margin-top: 6%;
+  padding-bottom: 8px;
+}
+
+main {
+  background-image: url("img/space.jpg");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  overflow: auto; /* fixes whitespace problem on top */
+}
+
+nav {
+  background-color: var(--backgroundColor);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  font-family: "Ropa Sans", "Times New Roman";
+}
+
+nav a {
+  text-decoration: none;
+  text-align: center;
+  font-size: 20px;
+  background-color: #40476d;
+  padding: 5px;
+  margin: 5px;
+  border-radius: 5px;
+}
+
+nav a:current {
+  background-color: yellowgreen;
+}
+
+nav a:hover {
+  background-color: #1d223f;
+  transition: background-color;
+  transition-duration: 0.5s;
+}
+video {
+  width: 50%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 10px;
+  padding: 5px;
+}
+
+.button-container {
+  height: 50px;
+  position: relative;
+  text-align: center;
+}
+
+button {
+  top: 50%;
+  background-color: var(--buttonColor);
+  font-family: "Inter";
+  padding: 10px;
+}
+
+footer {
+  background-color: var(--backgroundColor);
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+footer h3 {
+  font-family: "Mukta", "Times New Roman";
+}
+
+/* must be underneath to overwrite property */
+@media only screen and (min-width: 600px) {
+  nav {
+    position: sticky;
+    top: 0;
+  }
+  header img {
+    margin-top: 30px;
+    width: 400px;
+  }
+  nav {
+    flex-direction: row;
+  }
+  nav a {
+    font-size: 25px;
+  }
+  main {
+    background-attachment: unset;
+  }
+  video {
+    border-radius: 10px;
+    width: 300px;
+    padding-right: 30px;
+  }
+  article.video {
+    display: flex;
+  }
+  footer {
+    flex-direction: row;
+  }
+  footer section {
+    padding-right: 5%;
+  }
+}
