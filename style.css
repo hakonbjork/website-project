@@ -3,7 +3,9 @@
   --headerFont: "Karla";
   --paragraphFont: "Mukta";
   --backgroundColor: rgb(0, 2, 36);
-  --buttonColor: #a8c686;
+  --currentPageButtonColor: rgb(208, 223, 118);
+  --buttonColor: rgb(15, 220, 131);
+  --transissionDuration: 0.3s;
 }
 
 /* Link to same page will scroll */
@@ -55,6 +57,7 @@ nav {
   justify-content: center;
   flex-direction: column;
   font-family: "Ropa Sans", "Times New Roman";
+  z-index: 2; /* Solved that book button appears in front */
 }
 
 nav a {
@@ -67,15 +70,21 @@ nav a {
   border-radius: 5px;
 }
 
-nav a:current {
-  background-color: yellowgreen;
-}
-
 nav a:hover {
   background-color: #1d223f;
   transition: background-color;
-  transition-duration: 0.5s;
+  transition-duration: var(--transissionDuration);
 }
+
+nav a.current-page {
+  background-color: var(--currentPageButtonColor);
+  color: black;
+}
+
+nav a.current-page:hover {
+  background-color: rgb(113, 121, 65);
+}
+
 video {
   width: 50%;
   display: block;
@@ -96,6 +105,14 @@ button {
   background-color: var(--buttonColor);
   font-family: "Inter";
   padding: 10px;
+  border-radius: 10px;
+}
+
+button:hover {
+  background-color: rgb(13, 137, 83);
+  cursor: pointer;
+  transition: background-color;
+  transition-duration: var(--transissionDuration);
 }
 
 footer {
