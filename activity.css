@@ -1,0 +1,25 @@
+.activity-article section {
+  padding: 3% 4%;
+}
+
+.activity-article img {
+  width: 90%;
+  padding: 3%;
+}
+
+/* Remember to include media query here */
+
+@media only screen and (min-width: 600px) {
+  .activity-article {
+    display: flex;
+  }
+
+  .activity-article img {
+    align-self: center;
+    width: 40%;
+  }
+
+  .activity-article img.vertical-picture {
+    width: 30%;
+  }
+}

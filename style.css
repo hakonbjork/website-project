@@ -12,7 +12,8 @@ h1,
 h2,
 h3,
 p,
-a {
+a,
+li {
   color: white;
 }
 
@@ -21,7 +22,8 @@ h2 {
   font-family: var(--headerFont), "Arial";
 }
 
-p {
+p,
+li {
   font-family: var(--paragraphFont), "Times New Roman";
 }
 
@@ -42,7 +44,7 @@ header img {
 main {
   background-image: url("img/space.jpg");
   background-size: 100%;
-  background-repeat: no-repeat;
+  background-repeat: repeat-y;
   background-attachment: fixed;
   overflow: auto; /* fixes whitespace problem on top */
 }
@@ -88,6 +90,15 @@ video {
   margin-right: auto;
   border-radius: 10px;
   padding: 5px;
+}
+
+.article-header {
+  font-size: 2em;
+}
+
+.article-sub-header {
+  font-family: "Ropa Sans", "Arial";
+  font-weight: normal;
 }
 
 .button-container {
@@ -140,7 +151,6 @@ footer h3 {
   }
   main {
     background-attachment: unset;
-    background-repeat: repeat-y;
   }
   video {
     border-radius: 10px;
