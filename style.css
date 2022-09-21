@@ -18,6 +18,7 @@ label {
   color: white;
 }
 
+/*Get them column-wise*/
 label,
 input {
   display: block;
@@ -172,7 +173,7 @@ footer h3 {
     font-size: 25px;
   }
   main {
-    background-attachment: unset;
+    background-attachment: scroll;
   }
   #map {
     width: 63%;
