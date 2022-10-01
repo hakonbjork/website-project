@@ -18,6 +18,10 @@ label {
   color: white;
 }
 
+body {
+  margin: 0;
+}
+
 /*Get them column-wise*/
 label,
 input {
@@ -29,11 +33,13 @@ input {
 h1,
 h2 {
   font-family: var(--headerFont), "Arial";
+  margin-left: 2%;
 }
 
 p,
 li {
   font-family: var(--paragraphFont), "Times New Roman";
+  margin-left: 2%;
 }
 
 header {
@@ -154,6 +160,11 @@ footer {
 
 footer h3 {
   font-family: "Mukta", "Times New Roman";
+  margin-left: 2%;
+}
+
+footer section {
+  margin-left: 2%;
 }
 
 /* must be underneath to overwrite property */

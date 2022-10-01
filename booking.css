@@ -1,0 +1,11 @@
+#booking_form {
+  margin-left: 2%;
+}
+
+#booking_button {
+  margin: 12px 5px;
+}
+
+label {
+  font-family: var(--paragraphFont), "Times New Roman";
+}
