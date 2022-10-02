@@ -136,6 +136,23 @@ video {
   text-align: center;
 }
 
+@keyframes color_changing {
+  0% {
+    background-color: var(--backgroundColor);
+  }
+  25% {
+    background-color: aqua;
+  }
+  75% {
+    background-color: coral;
+  }
+}
+
+.color_change {
+  animation-name: color_changing;
+  animation-duration: 2s;
+}
+
 button {
   top: 50%;
   background-color: var(--buttonColor);
