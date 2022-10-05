@@ -1,11 +1,16 @@
-#booking_form {
+#booking-form {
   margin-left: 2%;
 }
 
-#booking_button {
+#booking-button {
   margin: 12px 5px;
 }
 
 label {
   font-family: var(--paragraphFont), "Times New Roman";
+}
+
+.form-error {
+  color: red;
+  border-color: red;
 }
