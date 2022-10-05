@@ -3,7 +3,7 @@ document.addEventListener("readystatechange", function (event) {
     // site interactive
     addValidateFormInputListener();
     addKeyDownListeners();
-    addCalendarInputlisteners();
+    addCalendarInputListeners();
   }
 });
 
@@ -44,8 +44,15 @@ function addValidateFormInputListener() {
 
       if (complete) {
         console.log("complete form");
+        if (validateFormContent()) {
+          console.log("all valid, moooooving on");
+          const button = document.querySelector("#booking-form button");
+          button.innerHTML = "Booking Completed ✅";
+          button.setAttribute("disabled", "true");
+        }
       } else {
         console.log("not completed form");
+        // do stuff
       }
 
       event.preventDefault();
@@ -62,7 +69,7 @@ function addKeyDownListeners() {
   }
 }
 
-function addCalendarInputlisteners() {
+function addCalendarInputListeners() {
   let dateInputs = document.querySelectorAll("input[type=date]");
   for (let dateInput of dateInputs) {
     dateInput.addEventListener("change", function () {
@@ -71,4 +78,33 @@ function addCalendarInputlisteners() {
       }
     });
   }
+}
+
+// check if content valid, returns true or false;
+function validateFormContent() {
+  let mail = document.querySelector("#form-mail");
+  let startDate = document.querySelector("#form-start-date");
+  let endDate = document.querySelector("#form-end-date");
+
+  let contentValid = true;
+
+  if (!(mail.value.includes("@") && mail.value.includes("."))) {
+    contentValid = false;
+    mail.classList.add("form-error");
+  }
+
+  const startDateDate = new Date(startDate.value);
+  const endDateDate = new Date(endDate.value);
+
+  if (startDateDate > endDateDate) {
+    contentValid = false;
+    endDate.classList.add("form-error");
+  }
+
+  if (startDateDate < new Date().setHours(0, 0, 0, 0)) {
+    contentValid = false;
+    startDate.classList.add("form-error");
+  }
+
+  return contentValid;
 }
