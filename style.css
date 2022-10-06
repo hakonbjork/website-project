@@ -5,9 +5,11 @@
   --backgroundColor: rgb(0, 2, 36);
   --currentPageButtonColor: rgb(208, 223, 118);
   --buttonColor: rgb(15, 220, 131);
+  --activityBoxbackgroundColor: #6ba0d9;
   --transissionDuration: 0.3s;
 }
 
+/* Text color */
 h1,
 h2,
 h3,
@@ -18,11 +20,29 @@ label {
   color: white;
 }
 
+/* Remove whitspace*/
 body {
   margin: 0;
 }
 
-/*Get them column-wise*/
+/* Header margin and fonts */
+h1,
+h2 {
+  font-family: var(--headerFont), "Arial";
+  margin-right: 2%;
+  margin-left: 2%;
+}
+
+/* Text margin and fonts*/
+p,
+li,
+label {
+  font-family: var(--paragraphFont), "Times New Roman";
+  margin-right: 2%;
+  margin-left: 2%;
+}
+
+/*Show booking form vertically*/
 label,
 input {
   display: block;
@@ -30,24 +50,12 @@ input {
   margin: 0.2em;
 }
 
-h1,
-h2 {
-  font-family: var(--headerFont), "Arial";
-  margin-left: 2%;
-}
-
-p,
-li {
-  font-family: var(--paragraphFont), "Times New Roman";
-  margin-left: 2%;
-  margin-right: 2%;
-}
-
 header {
   background-color: var(--backgroundColor);
   overflow: auto;
 }
 
+/* "The Martian" logo */
 header img {
   display: block;
   margin-left: auto;
@@ -57,37 +65,17 @@ header img {
   padding-bottom: 8px;
 }
 
-main {
-  background-image: url("img/space.jpg");
-  background-size: 100%;
-  background-repeat: repeat-y;
-  background-attachment: fixed;
-  overflow: auto; /* fixes whitespace problem on top */
-}
-
-.flex-article section {
-  padding: 3% 4%;
-}
-
-.flex-article img {
-  width: 90%;
-  padding: 3%;
-}
-
-#map {
-  width: 90%;
-  padding: 1% 2%;
-}
-
+/* Navigation bar */
 nav {
   background-color: var(--backgroundColor);
   display: flex;
   justify-content: center;
   flex-direction: column;
   font-family: "Ropa Sans", "Times New Roman";
-  z-index: 2; /* Solved that book button appears in front */
+  z-index: 2; /* Solved that book button appears in front of nav */
 }
 
+/*Navigation buttons*/
 nav a {
   text-decoration: none;
   text-align: center;
@@ -113,45 +101,15 @@ nav a.current-page:hover {
   background-color: rgb(113, 121, 65);
 }
 
-video {
-  width: 50%;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  border-radius: 10px;
-  padding: 5px;
+main {
+  background-image: url("img/space.jpg");
+  background-size: 100%;
+  background-repeat: repeat-y;
+  background-attachment: fixed;
+  overflow: auto; /* fixes whitespace problem on top */
 }
 
-.article-header {
-  font-size: 2em;
-}
-
-.article-sub-header {
-  font-family: "Ropa Sans", "Arial";
-  font-weight: normal;
-}
-
-.button-container {
-  height: 50px;
-  position: relative;
-  text-align: center;
-}
-
-@keyframes color_changing {
-  0% {
-    background-color: var(--buttonColor);
-  }
-  50% {
-    background-color: #f8f804;
-  }
-}
-
-.color_change {
-  animation-name: color_changing;
-  animation-duration: 3s;
-  animation-iteration-count: infinite;
-}
-
+/* Consistent button style*/
 button {
   top: 50%;
   background-color: var(--buttonColor);
@@ -184,51 +142,155 @@ footer section {
   margin-left: 2%;
 }
 
+.flex-article section {
+  padding: 3% 4%;
+}
+
+.flex-article img {
+  width: 90%;
+  padding: 3%;
+}
+
+.article-header {
+  font-size: 2em;
+}
+
+.article-sub-header {
+  font-family: "Ropa Sans", "Arial";
+  font-weight: normal;
+}
+
+.button-container {
+  height: 50px;
+  position: relative;
+  text-align: center;
+}
+
+.activity-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.activity-box {
+  padding: 1% 2%;
+  margin: 2% 5%;
+  background-color: var(--activityBoxbackgroundColor);
+  border-radius: 3%;
+}
+
+.activity-box > img {
+  width: 70%;
+  display: block;
+  border-radius: 2%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.form-error {
+  color: red;
+  border-color: red;
+}
+
+@keyframes color_changing {
+  0% {
+    background-color: var(--buttonColor);
+  }
+  50% {
+    background-color: #f8f804;
+  }
+}
+
+.color_change {
+  animation-name: color_changing;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+}
+
+#front-page-video {
+  width: 50%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 10px;
+  padding: 5px;
+}
+
+#booking-form {
+  margin-left: 2%;
+}
+
+#booking-button {
+  margin: 12px 5px;
+}
+
+#booking-button[disabled] {
+  background: rgb(122, 129, 94);
+  color: rgb(36, 34, 34);
+  cursor: default;
+}
+
 /* Tablet */
 @media only screen and (min-width: 650px) {
-  nav {
-    position: sticky;
-    top: 0;
-  }
   header img {
     margin-top: 30px;
     width: 400px;
   }
+
+  nav {
+    position: sticky;
+    top: 0;
+  }
+
   nav {
     flex-direction: row;
   }
+
   nav a {
     font-size: 25px;
   }
+
   main {
     background-attachment: scroll;
   }
-  #map {
-    width: 63%;
+
+  footer {
+    flex-direction: row;
   }
-  video {
-    border-radius: 10px;
-    width: 300px;
-    padding-right: 30px;
+
+  footer section {
+    padding-right: 5%;
   }
-  article.video {
-    display: flex;
-  }
+
   .flex-article {
     display: flex;
   }
+
   .flex-article img {
     align-self: center;
     width: 47%;
   }
+
   .flex-article img.vertical-picture {
     width: 30%;
   }
-  footer {
+
+  .activity-container {
     flex-direction: row;
   }
-  footer section {
-    padding-right: 5%;
+
+  .activity-box {
+    margin: 2%;
+    width: 30%;
+  }
+
+  .activity-box img {
+    width: 100%;
+  }
+
+  #front-page-video {
+    border-radius: 10px;
+    width: 300px;
+    padding-right: 30px;
   }
 }
 
