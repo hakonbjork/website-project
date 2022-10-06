@@ -40,6 +40,7 @@ p,
 li {
   font-family: var(--paragraphFont), "Times New Roman";
   margin-left: 2%;
+  margin-right: 2%;
 }
 
 header {
@@ -138,19 +139,17 @@ video {
 
 @keyframes color_changing {
   0% {
-    background-color: var(--backgroundColor);
+    background-color: var(--buttonColor);
   }
-  25% {
-    background-color: aqua;
-  }
-  75% {
-    background-color: coral;
+  50% {
+    background-color: #f8f804;
   }
 }
 
 .color_change {
   animation-name: color_changing;
-  animation-duration: 2s;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
 }
 
 button {
@@ -166,6 +165,7 @@ button:hover {
   cursor: pointer;
   transition: background-color;
   transition-duration: var(--transissionDuration);
+  animation-play-state: paused;
 }
 
 footer {
@@ -184,8 +184,8 @@ footer section {
   margin-left: 2%;
 }
 
-/* must be underneath to overwrite property */
-@media only screen and (min-width: 600px) {
+/* Tablet */
+@media only screen and (min-width: 650px) {
   nav {
     position: sticky;
     top: 0;
@@ -219,7 +219,7 @@ footer section {
   }
   .flex-article img {
     align-self: center;
-    width: 40%;
+    width: 47%;
   }
   .flex-article img.vertical-picture {
     width: 30%;
@@ -229,5 +229,14 @@ footer section {
   }
   footer section {
     padding-right: 5%;
+  }
+}
+
+/* Desktop */
+@media only screen and (min-width: 1000px) {
+  .main-content-reduced-width {
+    width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
