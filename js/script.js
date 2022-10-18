@@ -1,5 +1,3 @@
-/* All js code is for now concerning booking form */
-
 document.addEventListener("readystatechange", function (event) {
   if (event.target.readyState === "interactive") {
     // site interactive
@@ -25,18 +23,13 @@ function addValidateFormInputListener() {
       }
 
       if (complete) {
-        console.log("complete form");
         if (validateFormContent()) {
-          console.log("all valid, moooooving on");
           const button = document.querySelector("#booking-form button");
           button.innerHTML = "Booking Completed ✅";
           button.setAttribute("disabled", "true");
+          storeValues();
         }
-      } else {
-        console.log("not completed form");
-        // do stuff
       }
-
       event.preventDefault();
     });
 }
@@ -45,7 +38,7 @@ function addValidateFormInputListener() {
 function addKeyDownListeners() {
   let formInputs = document.querySelectorAll("#booking-form input");
   for (let input of formInputs) {
-    input.addEventListener("keydown", function () {
+    input.addEventListener("keydown", function (event) {
       input.classList.remove("form-error");
     });
   }
@@ -54,9 +47,10 @@ function addKeyDownListeners() {
 function addCalendarInputListeners() {
   let dateInputs = document.querySelectorAll("input[type=date]");
   for (let dateInput of dateInputs) {
-    dateInput.addEventListener("change", function () {
+    dateInput.addEventListener("change", function (event) {
       if (dateInput.value != "") {
         dateInput.classList.remove("form-error");
+        event.preventDefault();
       }
     });
   }
@@ -89,4 +83,28 @@ function validateFormContent() {
   }
 
   return contentValid;
+}
+
+// Store values in localStorage for later use
+function storeValues() {
+  const name = document.querySelector("#form-name").value;
+  const number = document.querySelector("#form-number").value;
+  const mail = document.querySelector("#form-mail").value;
+  const numGuests = document.querySelector("#form-num-guests").value;
+  const startDate = document.querySelector("#form-start-date").value;
+  const endDate = document.querySelector("#form-end-date").value;
+
+  console.log(name);
+  console.log(number);
+  console.log(mail);
+  console.log(numGuests);
+  console.log(startDate);
+  console.log(endDate);
+
+  localStorage.setItem("booking-name", name);
+  localStorage.setItem("booking-number", number);
+  localStorage.setItem("booking-maill", mail);
+  localStorage.setItem("booking-numGuests", numGuests);
+  localStorage.setItem("booking-startDate", startDate);
+  localStorage.setItem("booking-endDate", endDate);
 }
