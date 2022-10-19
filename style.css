@@ -191,6 +191,10 @@ footer section {
   border-color: red;
 }
 
+.hidden {
+  display: none;
+}
+
 @keyframes color_changing {
   0% {
     background-color: var(--buttonColor);

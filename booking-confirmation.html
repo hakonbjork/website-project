@@ -18,22 +18,38 @@
       </a>
     </header>
     <nav>
-      <a class="current-page" href="about.html">About</a>
+      <a href="about.html">About</a>
       <a href="activities.html">Activities</a>
       <a href="food-drink.html">Food & Drink</a>
       <a href="booking.html">Booking</a>
     </nav>
     <main>
       <article class="main-content-reduced-width">
-        <h1 class="article-header">Thank you!</h1>
-        <h2 class="article-sub-header">View your booking here:</h2>
-        <section>
+        <section id="booking-exist" class="hidden">
+          <h1 class="article-header">Thank you!</h1>
+          <h2 class="article-sub-header">Your booking details:</h2>
           <ul>
-            <li>Name:</li>
-            <li>Mail:</li>
-            <li>Number:</li>
-            <li>Number of guests:</li>
+            <li>Name:&nbsp</li>
+            <li>Number:&nbsp</li>
+            <li>Mail:&nbsp</li>
+            <li>Number of guests:&nbsp</li>
+            <li>Date of arrival:&nbsp</li>
+            <li>Date of departure:&nbsp</li>
           </ul>
+        </section>
+        <section id="no-booking-exist" class="hidden">
+          <h1 class="article-header">No bookings... yet!</h1>
+          <h2 class="article-sub-header">
+            There was no saved bookings to be found
+          </h2>
+          <p>Why not go to the booking section?</p>
+        </section>
+        <section id="no-js">
+          <h1 class="article-header">Oh no!</h1>
+          <h2 class="article-sub-header">
+            You need JavaScript to see previous bookings
+          </h2>
+          <p>Are you sure JavaScript is enabled on the site?</p>
         </section>
       </article>
     </main>
@@ -48,5 +64,6 @@
         <p>Central Space Road 23<br />4523 Solar System<br />Milky Way</p>
       </section>
     </footer>
+    <script src="js/booking-confirmation.js"></script>
   </body>
 </html>
