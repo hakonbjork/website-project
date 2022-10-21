@@ -13,7 +13,7 @@
   </head>
   <body>
     <header>
-      <a href="index.html">
+      <a href="../index.html">
         <img
           src="../img/header-img-light.png"
           alt="The Martian"
@@ -40,6 +40,10 @@
             <li>Where: Resort, Pluto Room</li>
             <li>What to bring: Nothing in particular</li>
           </ul>
+          <h2 class="article-sub-header">
+            Can't wait? Try the chat right here!
+          </h2>
+          <button id="hide-show-chat">Hide/Show chat</button>
         </section>
         <img
           class="vertical-picture"
@@ -47,6 +51,16 @@
           alt="Image of an astronaut"
         />
       </article>
+      <div id="astronaut-chat-field" class="hidden">
+        <div id="top-bar">
+          <p>Talk to an astronaut</p>
+        </div>
+        <section id="messages"></section>
+        <form action="">
+          <input type="text" placeholder="Type something..." />
+          <button type="submit">Send</button>
+        </form>
+      </div>
     </main>
 
     <footer>
@@ -59,5 +73,6 @@
         <p>Central Space Road 23<sbr />4523 Solar System<br />Milky Way</p>
       </section>
     </footer>
+    <script src="../js/astronaut-chat.js"></script>
   </body>
 </html>

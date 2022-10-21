@@ -242,6 +242,56 @@ footer section {
   cursor: default;
 }
 
+#astronaut-chat-field {
+  position: absolute;
+  right: 20px;
+  bottom: 180px;
+  width: 300px;
+  height: 400px;
+  border-radius: 10px;
+  background-color: antiquewhite;
+}
+
+#astronaut-chat-field p {
+  margin-top: 0;
+}
+
+#astronaut-chat-field #top-bar {
+  background-color:azure;
+  width: 100%;
+  height: 40px;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+}
+
+#astronaut-chat-field #messages {
+  height: 360px;
+  overflow: scroll;
+}
+
+#astronaut-chat-field #message-container {
+  border-radius: 10px;
+  background-color: #6ba0d9;
+}
+
+#astronaut-chat-field #answer-container {
+  border-radius: 10px;
+  background-color: #7cb379
+}
+
+#astronaut-chat-field p {
+  color: black;
+}
+
+#astronaut-chat-field form {
+  display: flex;
+  bottom: 0;
+  width: 100%;
+  background-color: antiquewhite;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
 /* Tablet */
 @media only screen and (min-width: 650px) {
   header img {
