@@ -28,6 +28,7 @@ function addValidateFormInputListener() {
           button.innerHTML = "Booking Completed ✅";
           button.setAttribute("disabled", "true");
           storeValues();
+          window.location.href = "./booking-confirmation.html";
         }
       }
       event.preventDefault();

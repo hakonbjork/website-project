@@ -13,8 +13,6 @@ function fetchBookingShowContent() {
   const startDate = localStorage.getItem("booking-startDate");
   const endDate = localStorage.getItem("booking-endDate");
 
-  // TODO: Format dates
-
   if (name && number && mail && numGuests && startDate && endDate) {
     document.querySelector("#booking-exist").classList.toggle("hidden");
     document.querySelector("#booking-exist li:nth-child(1)").innerHTML += name;
@@ -24,9 +22,9 @@ function fetchBookingShowContent() {
     document.querySelector("#booking-exist li:nth-child(4)").innerHTML +=
       numGuests;
     document.querySelector("#booking-exist li:nth-child(5)").innerHTML +=
-      startDate;
+      formatDate(startDate);
     document.querySelector("#booking-exist li:nth-child(6)").innerHTML +=
-      endDate;
+      formatDate(endDate);
   } else {
     document.querySelector("#no-booking-exist").classList.toggle("hidden");
   }
@@ -48,5 +46,17 @@ function formatDate(dateString) {
     12: "December",
   };
 
-  return months[dateString];
+  const month = months[dateString.slice(5, 7)];
+  const date = dateString.slice(8, 10);
+  const year = dateString.slice(0, 4);
+  let prefix = "th";
+  if (+date == 1) {
+    prefix = "st";
+  } else if (+date == 2) {
+    prefix = "nd";
+  } else if (+date == 3) {
+    prefix = "rd";
+  }
+
+  return `${month} ${+date}${prefix}, ${year}`;
 }

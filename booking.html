@@ -26,33 +26,51 @@
     <main>
       <article>
         <h1 class="article-header">Booking</h1>
-        <form id="booking-form" action="">
-          <label for="form-name">Name:</label>
-          <input type="text" id="form-name" placeholder="Enter your name.." />
-          <label for="form-number">Number:</label>
-          <input
-            type="number"
-            id="form-number"
-            placeholder="Enter your number.."
-          />
-          <label for="form-mail">Mail:</label>
-          <input type="text" id="form-mail" placeholder="Enter your mail.." />
-          <label for="form-num-guests">Number of guests:</label>
-          <input
-            type="number"
-            id="form-num-guests"
-            placeholder="For example 3"
-          />
-          <label for="form-start-date">Date of arrival:</label>
-          <input type="date" id="form-start-date" />
-          <label for="form-end-date">Date of departure:</label>
-          <input type="date" id="form-end-date" />
+        <article class="flex-article">
+          <section id="new-booking-section">
+            <h2 class="article-sub-header">Make a new booking</h2>
+            <form id="booking-form" action="">
+              <label for="form-name">Name:</label>
+              <input
+                type="text"
+                id="form-name"
+                placeholder="Enter your name.."
+              />
+              <label for="form-number">Number:</label>
+              <input
+                type="number"
+                id="form-number"
+                placeholder="Enter your number.."
+              />
+              <label for="form-mail">Mail:</label>
+              <input
+                type="text"
+                id="form-mail"
+                placeholder="Enter your mail.."
+              />
+              <label for="form-num-guests">Number of guests:</label>
+              <input
+                type="number"
+                id="form-num-guests"
+                placeholder="For example 3"
+              />
+              <label for="form-start-date">Date of arrival:</label>
+              <input type="date" id="form-start-date" />
+              <label for="form-end-date">Date of departure:</label>
+              <input type="date" id="form-end-date" />
 
-          <button type="submit" id="booking-button">Send booking</button>
-        </form>
-        <a href="booking-confirmation.html">
-          <button>See booking</button>
-        </a>
+              <button type="submit" id="booking-button">Send booking</button>
+            </form>
+          </section>
+          <section>
+            <h2 class="article-sub-header">
+              Already have a booking? Press the button below!
+            </h2>
+            <a href="booking-confirmation.html">
+              <button>See saved booking</button>
+            </a>
+          </section>
+        </article>
       </article>
     </main>
 

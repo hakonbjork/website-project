@@ -86,21 +86,25 @@ nav a {
   border-radius: 5px;
 }
 
+/* Transition while hovering over navigation buttons */
 nav a:hover {
   background-color: #1d223f;
   transition: background-color;
   transition-duration: var(--transissionDuration);
 }
 
+/* Nav button for current page yellow*/
 nav a.current-page {
   background-color: var(--currentPageButtonColor);
   color: black;
 }
 
+/* Transition while hovering */
 nav a.current-page:hover {
   background-color: rgb(113, 121, 65);
 }
 
+/* Background space image */
 main {
   background-image: url("img/space.jpg");
   background-size: 100%;
@@ -126,6 +130,7 @@ button:hover {
   animation-play-state: paused;
 }
 
+/* Footer */
 footer {
   background-color: var(--backgroundColor);
   overflow: auto;
@@ -141,6 +146,8 @@ footer h3 {
 footer section {
   margin-left: 2%;
 }
+
+/* Classes */
 
 .flex-article section {
   padding: 3% 4%;
@@ -209,6 +216,8 @@ footer section {
   animation-duration: 3s;
   animation-iteration-count: infinite;
 }
+
+/* IDs */
 
 #front-page-video {
   width: 50%;
@@ -295,6 +304,17 @@ footer section {
     border-radius: 10px;
     width: 300px;
     padding-right: 30px;
+  }
+
+  #new-booking-section {
+    width: 300px;
+  }
+}
+
+/* Ensure page takes up the full width */
+@media only screen and (min-width: 650px) and (min-height: 650px) {
+  main {
+    min-height: 59.85vh;
   }
 }
 
