@@ -1,46 +1,44 @@
 document.addEventListener("readystatechange", function (event) {
   if (event.target.readyState === "interactive") {
-    // site interactive
-    addValidateFormInputListener();
-    addKeyDownListeners();
-    addCalendarInputListeners();
-
+    document
+      .querySelector("#booking-form")
+      .addEventListener("submit", validateForm);
     document
       .querySelector("#confirm-booking .confirm-button")
       .addEventListener("click", storeValuesSwitchPage);
     document
       .querySelector("#confirm-booking .change-button")
       .addEventListener("click", hidePopupEnableButtons);
+
+    addKeyDownListeners();
+    addCalendarInputListeners();
   }
 });
 
-function addValidateFormInputListener() {
-  document
-    .querySelector("#booking-form")
-    .addEventListener("submit", function (event) {
-      let complete = true;
-      let formInputs = document.querySelectorAll("#booking-form input");
+// check if form is complete, and then if content makes sense
+function validateForm(event) {
+  let complete = true;
+  let formInputs = document.querySelectorAll("#booking-form input");
 
-      for (let input of formInputs) {
-        if (input.value != "") {
-        } else {
-          complete = false;
-          input.classList.add("form-error");
-        }
-      }
+  for (let input of formInputs) {
+    if (input.value != "") {
+    } else {
+      complete = false;
+      input.classList.add("form-error");
+    }
+  }
 
-      if (complete) {
-        if (validateFormContent()) {
-          document
-            .querySelectorAll("#booking-form input, #booking-form button")
-            .forEach((el) => el.setAttribute("disabled", true));
-          document.querySelector("#booking-form button").innerHTML =
-            "Confirming...";
-          showConfirmBookingPopup();
-        }
-      }
-      event.preventDefault();
-    });
+  if (complete) {
+    if (validateFormContent()) {
+      document
+        .querySelectorAll("#booking-form input, #booking-form button")
+        .forEach((el) => el.setAttribute("disabled", true));
+      document.querySelector("#booking-form button").innerHTML =
+        "Confirming...";
+      showConfirmBookingPopup();
+    }
+  }
+  event.preventDefault();
 }
 
 // removes error class on input field and label
@@ -54,6 +52,7 @@ function addKeyDownListeners() {
   }
 }
 
+// removes error class on calendar fields when input change
 function addCalendarInputListeners() {
   let dateInputs = document.querySelectorAll("input[type=date]");
   for (let dateInput of dateInputs) {
@@ -67,6 +66,7 @@ function addCalendarInputListeners() {
 }
 
 // check if content valid, returns true or false;
+// sets error class on fields if not valid
 function validateFormContent() {
   let mail = document.querySelector("#form-mail");
   let startDate = document.querySelector("#form-start-date");
@@ -95,10 +95,11 @@ function validateFormContent() {
   return contentValid;
 }
 
+// Show popup with the details for the user to double check before confirming
+// Disables form input fields and button while popup is showing
 function showConfirmBookingPopup() {
   const confirmBookingElement = document.querySelector("#confirm-booking");
   confirmBookingElement.classList.remove("hidden");
-  confirmBookingElement.scrollIntoView();
 
   const name = document.querySelector("#form-name").value;
   const number = document.querySelector("#form-number").value;
@@ -121,12 +122,13 @@ function showConfirmBookingPopup() {
   ).innerHTML = `Number of guests: ${numGuests}`;
   document.querySelector(
     "#confirm-booking #details p:nth-child(5)"
-  ).innerHTML = `Date of arrival: ${startDate}`;
+  ).innerHTML = `Date of arrival: ${formatDate(startDate)}`;
   document.querySelector(
     "#confirm-booking #details p:nth-child(6)"
-  ).innerHTML = `Date of departure: ${endDate}`;
+  ).innerHTML = `Date of departure: ${formatDate(endDate)}`;
 }
 
+// Close popup, and enable the form inputs and button again
 function hidePopupEnableButtons(event) {
   document.querySelector("#confirm-booking").classList.add("hidden");
   document.querySelector("#booking-form button").innerHTML = "Send booking";
@@ -158,7 +160,8 @@ function storeValuesSwitchPage(event) {
   event.preventDefault();
 }
 
-/* Used to make development and testing faster */
+/* Automatically fills form fields with some legal values
+  used only to make development and testing faster */
 function fillFields() {
   document.querySelector("#form-name").value = "Hans Hansen";
   document.querySelector("#form-number").value = 23456;
