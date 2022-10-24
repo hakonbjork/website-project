@@ -1,5 +1,8 @@
 document.addEventListener("readystatechange", function (event) {
   if (event.target.readyState === "interactive") {
+    document.querySelector("#booking-form button").removeAttribute("disabled");
+    document.querySelector(".no-js").classList.add("hidden");
+
     document
       .querySelector("#booking-form")
       .addEventListener("submit", validateForm);

@@ -1,6 +1,6 @@
 document.addEventListener("readystatechange", function (event) {
   if (event.target.readyState === "interactive") {
-    document.querySelector("#no-js").classList.toggle("hidden");
+    document.querySelector(".no-js").classList.toggle("hidden");
     fetchBookingShowContent();
   }
 });

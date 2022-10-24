@@ -1,6 +1,9 @@
 document.addEventListener("readystatechange", function (event) {
   if (event.target.readyState === "interactive") {
     document
+      .querySelectorAll(".js")
+      .forEach((el) => el.classList.remove("hidden"));
+    document
       .querySelector("#astronaut-chat-field form")
       .addEventListener("submit", sendMessage);
   }
