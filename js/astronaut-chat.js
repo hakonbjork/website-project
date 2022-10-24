@@ -5,8 +5,8 @@ document.addEventListener("readystatechange", function (event) {
       .addEventListener("submit", sendMessage);
   }
   document
-    .querySelector("#astronaut-chat-field #top-bar button, #hide-show-chat")
-    .addEventListener("click", hideChat);
+    .querySelectorAll("#astronaut-chat-field #top-bar button, #hide-show-chat")
+    .forEach((el) => el.addEventListener("click", toggleChat));
 });
 
 function sendMessage(event) {
@@ -69,7 +69,7 @@ function respondToMessage(message) {
   return answer;
 }
 
-function hideChat(event) {
+function toggleChat(event) {
   document.querySelector("#astronaut-chat-field").classList.toggle("hidden");
 
   event.preventDefault();

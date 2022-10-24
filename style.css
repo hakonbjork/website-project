@@ -243,17 +243,16 @@ footer section {
 }
 
 #astronaut-chat-field {
-  position: absolute;
-  right: 20px;
-  bottom: 180px;
-  width: 300px;
-  height: 400px;
   border-radius: 10px;
   background-color: antiquewhite;
+  margin: 3% 4%;
+  float: left;
+
 }
 
 #astronaut-chat-field p {
   margin-top: 0;
+  color: black;
 }
 
 #astronaut-chat-field #top-bar {
@@ -262,11 +261,14 @@ footer section {
   height: 40px;
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
+  display: flex;
+  justify-content: space-between;
 }
 
 #astronaut-chat-field #messages {
-  height: 360px;
+  height: 280px;
   overflow: scroll;
+  padding: 3% 4%;
 }
 
 #astronaut-chat-field #message-container {
@@ -277,10 +279,6 @@ footer section {
 #astronaut-chat-field #answer-container {
   border-radius: 10px;
   background-color: #7cb379
-}
-
-#astronaut-chat-field p {
-  color: black;
 }
 
 #astronaut-chat-field form {
@@ -328,13 +326,19 @@ footer section {
     display: flex;
   }
 
+  .flex-article section {
+  padding: 30px 40px;
+}
+
   .flex-article img {
     align-self: center;
     width: 47%;
+    padding: 0;
+    padding-right: 20px;
   }
 
   .flex-article img.vertical-picture {
-    width: 30%;
+    width: 37%;
   }
 
   .activity-container {
@@ -359,12 +363,25 @@ footer section {
   #new-booking-section {
     width: 300px;
   }
+
+  #astronaut-chat-field {
+    position: absolute;
+    width: 300px;
+    right: 20px;
+    bottom: 180px;
+  }
 }
 
 /* Ensure page takes up the full width */
 @media only screen and (min-width: 650px) and (min-height: 650px) {
   main {
     min-height: 59.85vh;
+  }
+}
+
+@media only screen and (min-width: 850px) {
+  .flex-article img.vertical-picture {
+    width: 350px;
   }
 }
 
