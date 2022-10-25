@@ -226,6 +226,10 @@ footer section {
   background-color: #db6e6e;
 }
 
+.change-button:hover {
+  background-color: #b64848;
+}
+
 /* IDs */
 
 #front-page-video {

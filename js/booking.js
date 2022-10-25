@@ -48,9 +48,8 @@ function validateForm(event) {
 function addKeyDownListeners() {
   let formInputs = document.querySelectorAll("#booking-form input");
   for (let input of formInputs) {
-    input.addEventListener("keydown", function (event) {
+    input.addEventListener("keydown", function () {
       input.classList.remove("form-error");
-      event.preventDefault();
     });
   }
 }
