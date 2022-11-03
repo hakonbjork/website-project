@@ -266,6 +266,15 @@ footer section {
   z-index: 2; /* To overlap header buttons */
 }
 
+#error-message {
+  position: absolute;
+  bottom: -288px;
+  left: 207px;
+  border: solid 2px rgb(198, 98, 98);
+  background-color: #364bc390;
+  border-radius: 10px;
+}
+
 #astronaut-chat-field {
   border-radius: 10px;
   background-color: antiquewhite;
@@ -403,7 +412,6 @@ footer section {
     position: absolute;
     width: 300px;
     right: 20px;
-    bottom: 180px;
   }
 }
 

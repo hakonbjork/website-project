@@ -18,6 +18,12 @@ document.addEventListener("readystatechange", function (event) {
   }
 });
 
+function setAndShowErrorMessage(message) {
+  const errorMessage = document.querySelector("#error-message");
+  errorMessage.classList.remove("hidden");
+  errorMessage.firstChild.innerHTML = message;
+}
+
 // check if form is complete, and then if content makes sense
 function validateForm(event) {
   let complete = true;
@@ -28,6 +34,7 @@ function validateForm(event) {
     } else {
       complete = false;
       input.classList.add("form-error");
+      setAndShowErrorMessage("Please fill inn all fields");
     }
   }
 
@@ -50,6 +57,7 @@ function addKeyDownListeners() {
   for (let input of formInputs) {
     input.addEventListener("keydown", function () {
       input.classList.remove("form-error");
+      document.querySelector("#error-message").classList.add("hidden");
     });
   }
 }
@@ -61,6 +69,7 @@ function addCalendarInputListeners() {
     dateInput.addEventListener("change", function (event) {
       if (dateInput.value != "") {
         dateInput.classList.remove("form-error");
+        document.querySelector("#error-message").classList.add("hidden");
         event.preventDefault();
       }
     });
@@ -79,6 +88,7 @@ function validateFormContent() {
   if (!(mail.value.includes("@") && mail.value.includes("."))) {
     contentValid = false;
     mail.classList.add("form-error");
+    setAndShowErrorMessage("Please make sure mail has a valid format");
   }
 
   const startDateDate = new Date(startDate.value);
@@ -87,11 +97,15 @@ function validateFormContent() {
   if (startDateDate > endDateDate) {
     contentValid = false;
     endDate.classList.add("form-error");
+    setAndShowErrorMessage(
+      "Please make sure date of departure is after date of arrival"
+    );
   }
 
   if (startDateDate < new Date().setHours(0, 0, 0, 0)) {
     contentValid = false;
     startDate.classList.add("form-error");
+    setAndShowErrorMessage("Date of arrival cannot be in the past");
   }
 
   return contentValid;
