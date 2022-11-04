@@ -10,10 +10,49 @@ document.addEventListener("readystatechange", function (event) {
   document
     .querySelectorAll("#astronaut-chat-field #top-bar button, #hide-show-chat")
     .forEach((el) => el.addEventListener("click", toggleChat));
+
+  document
+    .querySelectorAll(".example-container")
+    .forEach((el) => el.addEventListener("click", useExampleMessage));
 });
+
+function useExampleMessage(event) {
+  const message = this.firstElementChild.innerHTML;
+  const chat = document.querySelector("#messages");
+
+  const newTextElement = document.createElement("p");
+  newTextElement.innerHTML = message;
+
+  const newMessageElement = document.createElement("div");
+  newMessageElement.setAttribute("id", "message-container");
+  newMessageElement.appendChild(newTextElement);
+
+  chat.appendChild(newMessageElement);
+
+  chat.scrollTop = chat.scrollHeight;
+
+  const response = respondToMessage(message);
+  document.querySelector("#messages .examples").classList.add("hidden");
+
+  // create answer
+  const answerTextElement = document.createElement("p");
+  answerTextElement.innerHTML = response;
+
+  const answerMessageElement = document.createElement("div");
+  answerMessageElement.setAttribute("id", "answer-container");
+  answerMessageElement.appendChild(answerTextElement);
+
+  setTimeout(() => {
+    chat.appendChild(answerMessageElement);
+    chat.scrollTop = chat.scrollHeight;
+  }, 700);
+
+  event.preventDefault();
+}
 
 function sendMessage(event) {
   // Message
+  document.querySelector("#messages .examples").classList.add("hidden");
   const messageField = document.querySelector(
     "#astronaut-chat-field form input"
   );
