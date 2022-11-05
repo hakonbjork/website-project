@@ -1,19 +1,28 @@
 document.addEventListener("readystatechange", function (event) {
   if (event.target.readyState === "interactive") {
+    // show content that require JavaScript
     document
       .querySelectorAll(".js")
       .forEach((el) => el.classList.remove("hidden"));
-    document
-      .querySelector("#astronaut-chat-field form")
-      .addEventListener("submit", sendMessage);
-  }
-  document
-    .querySelectorAll("#astronaut-chat-field #top-bar button, #hide-show-chat")
-    .forEach((el) => el.addEventListener("click", toggleChat));
 
-  document
-    .querySelectorAll(".example-container")
-    .forEach((el) => el.addEventListener("click", useExampleMessage));
+    // astronaut.html page
+    const astronautChatFieldForm = document.querySelector(
+      "#astronaut-chat-field form"
+    );
+    if (document.body.contains(astronautChatFieldForm)) {
+      astronautChatFieldForm.addEventListener("submit", sendMessage);
+
+      document
+        .querySelectorAll(
+          "#astronaut-chat-field #top-bar button, #hide-show-chat"
+        )
+        .forEach((el) => el.addEventListener("click", toggleChat));
+
+      document
+        .querySelectorAll("#astronaut-chat-field .example-container")
+        .forEach((el) => el.addEventListener("click", useExampleMessage));
+    }
+  }
 });
 
 // function to be called when user clicks on example message (suggestion)
@@ -40,7 +49,7 @@ function useExampleMessage(event) {
   // hide the example messages
   document.querySelector("#messages .examples").classList.add("hidden");
 
-  // create answer based on message
+  // get answer and create answer element
   const answerTextElement = document.createElement("p");
   answerTextElement.innerHTML = response;
 
@@ -79,7 +88,7 @@ function sendMessage(event) {
 
   chat.scrollTop = chat.scrollHeight;
 
-  // get and create answer
+  // get answer and create answer element
   const response = respondToMessage(messageField.value);
   messageField.value = "";
 

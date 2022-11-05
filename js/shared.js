@@ -1,5 +1,3 @@
-// Functionality shared between several pages
-
 // function used to format dates to a more human-readable format
 // from this: 2023-02-27
 // to this: February 27th, 2023

@@ -1,20 +1,33 @@
+// add all event listeners when document is ready
 document.addEventListener("readystatechange", function (event) {
   if (event.target.readyState === "interactive") {
-    document.querySelector("#booking-form button").removeAttribute("disabled");
-    document.querySelector(".no-js").classList.add("hidden");
+    // both booking.html and booking-confirmation.html
+    // has both a single ".no-js" element
+    const noJsElement = document.querySelector(".no-js");
+    if (document.body.contains(noJsElement)) {
+      noJsElement.classList.add("hidden");
+    }
 
-    document
-      .querySelector("#booking-form")
-      .addEventListener("submit", validateForm);
-    document
-      .querySelector("#confirm-booking .confirm-button")
-      .addEventListener("click", storeValuesSwitchPage);
-    document
-      .querySelector("#confirm-booking .change-button")
-      .addEventListener("click", hidePopupEnableButtons);
+    // if the page contains booking form, it must be the booking page
+    const bookingForm = document.querySelector("#booking-form");
+    if (document.body.contains(bookingForm)) {
+      bookingForm.addEventListener("submit", validateForm);
 
-    addKeyDownListeners();
-    addCalendarInputListeners();
+      document
+        .querySelector("#booking-form button")
+        .removeAttribute("disabled");
+
+      document
+        .querySelector("#confirm-booking .confirm-button")
+        .addEventListener("click", storeValuesSwitchPage);
+
+      document
+        .querySelector("#confirm-booking .change-button")
+        .addEventListener("click", hidePopupEnableButtons);
+
+      addKeyDownListeners();
+      addCalendarInputListeners();
+    }
   }
 });
 

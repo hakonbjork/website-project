@@ -1,7 +1,11 @@
 document.addEventListener("readystatechange", function (event) {
   if (event.target.readyState === "interactive") {
     document.querySelector(".no-js").classList.toggle("hidden");
-    fetchBookingShowContent();
+    // booking-confirmation page
+    const bookingExistElement = document.querySelector("#booking-exist");
+    if (document.body.contains(bookingExistElement)) {
+      fetchBookingShowContent();
+    }
   }
 });
 
