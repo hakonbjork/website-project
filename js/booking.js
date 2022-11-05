@@ -18,6 +18,7 @@ document.addEventListener("readystatechange", function (event) {
   }
 });
 
+// set an error message next to the booking submit button
 function setAndShowErrorMessage(message) {
   const errorMessage = document.querySelector("#error-message");
   errorMessage.classList.remove("hidden");
@@ -29,15 +30,17 @@ function validateForm(event) {
   let complete = true;
   let formInputs = document.querySelectorAll("#booking-form input");
 
+  // check if form is complete
   for (let input of formInputs) {
-    if (input.value != "") {
-    } else {
+    if (input.value == "") {
       complete = false;
       input.classList.add("form-error");
       setAndShowErrorMessage("Please fill inn all fields");
     }
   }
 
+  // if complete, check if content is valid.
+  // if valid, disable form elements and show popup
   if (complete) {
     if (validateFormContent()) {
       document
@@ -51,7 +54,7 @@ function validateForm(event) {
   event.preventDefault();
 }
 
-// removes error class on input field and label
+// removes error class on form input field and label if keys are pressed
 function addKeyDownListeners() {
   let formInputs = document.querySelectorAll("#booking-form input");
   for (let input of formInputs) {
@@ -76,8 +79,8 @@ function addCalendarInputListeners() {
   }
 }
 
-// check if content valid, returns true or false;
-// sets error class on fields if not valid
+// check if content valid, returns true or false
+// sets error class on relevant field if not valid
 function validateFormContent() {
   let mail = document.querySelector("#form-mail");
   let startDate = document.querySelector("#form-start-date");
@@ -85,6 +88,7 @@ function validateFormContent() {
 
   let contentValid = true;
 
+  // check if mail field includes '@' and '.'
   if (!(mail.value.includes("@") && mail.value.includes("."))) {
     contentValid = false;
     mail.classList.add("form-error");
@@ -94,6 +98,7 @@ function validateFormContent() {
   const startDateDate = new Date(startDate.value);
   const endDateDate = new Date(endDate.value);
 
+  // check if startdate is before enddate
   if (startDateDate > endDateDate) {
     contentValid = false;
     endDate.classList.add("form-error");
@@ -102,6 +107,7 @@ function validateFormContent() {
     );
   }
 
+  // check if startdate is this day, or later
   if (startDateDate < new Date().setHours(0, 0, 0, 0)) {
     contentValid = false;
     startDate.classList.add("form-error");
@@ -124,24 +130,18 @@ function showConfirmBookingPopup() {
   const startDate = document.querySelector("#form-start-date").value;
   const endDate = document.querySelector("#form-end-date").value;
 
-  document.querySelector(
-    "#confirm-booking #details p:nth-child(1)"
-  ).innerHTML = `Name: ${name}`;
-  document.querySelector(
-    "#confirm-booking #details p:nth-child(2)"
-  ).innerHTML = `Number: ${number}`;
-  document.querySelector(
-    "#confirm-booking #details p:nth-child(3)"
-  ).innerHTML = `Mail: ${mail}`;
-  document.querySelector(
-    "#confirm-booking #details p:nth-child(4)"
-  ).innerHTML = `Number of guests: ${numGuests}`;
-  document.querySelector(
-    "#confirm-booking #details p:nth-child(5)"
-  ).innerHTML = `Date of arrival: ${formatDate(startDate)}`;
-  document.querySelector(
-    "#confirm-booking #details p:nth-child(6)"
-  ).innerHTML = `Date of departure: ${formatDate(endDate)}`;
+  document.querySelector("#confirm-booking #details p:nth-child(1)").innerHTML =
+    "Name: " + name;
+  document.querySelector("#confirm-booking #details p:nth-child(2)").innerHTML =
+    "Number: " + number;
+  document.querySelector("#confirm-booking #details p:nth-child(3)").innerHTML =
+    "Mail: " + mail;
+  document.querySelector("#confirm-booking #details p:nth-child(4)").innerHTML =
+    "Number of guests: " + numGuests;
+  document.querySelector("#confirm-booking #details p:nth-child(5)").innerHTML =
+    "Date of arrival: " + formatDate(startDate);
+  document.querySelector("#confirm-booking #details p:nth-child(6)").innerHTML =
+    "Date of departure: " + formatDate(endDate);
 }
 
 // Close popup, and enable the form inputs and button again
@@ -176,8 +176,8 @@ function storeValuesSwitchPage(event) {
   event.preventDefault();
 }
 
-/* Automatically fills form fields with some legal values
-  used only to make development and testing faster */
+// Automatically fills form fields with some legal values
+// used only to make development and testing faster
 function fillFields() {
   document.querySelector("#form-name").value = "Hans Hansen";
   document.querySelector("#form-number").value = 23456;

@@ -1,6 +1,8 @@
-/* Functionality shared between several pages */
+// Functionality shared between several pages
 
-// Used to format dates to a more human-readable format
+// function used to format dates to a more human-readable format
+// from this: 2023-02-27
+// to this: February 27th, 2023
 function formatDate(dateString) {
   const months = {
     "01": "January",
@@ -20,6 +22,7 @@ function formatDate(dateString) {
   const month = months[dateString.slice(5, 7)];
   const date = dateString.slice(8, 10);
   const year = dateString.slice(0, 4);
+
   let prefix = "th";
   if (+date == 1) {
     prefix = "st";

@@ -16,7 +16,11 @@ document.addEventListener("readystatechange", function (event) {
     .forEach((el) => el.addEventListener("click", useExampleMessage));
 });
 
+// function to be called when user clicks on example message (suggestion)
+// creates a new message (from the suggestion), sends that message
+// and creates a response
 function useExampleMessage(event) {
+  // create message from example message
   const message = this.firstElementChild.innerHTML;
   const chat = document.querySelector("#messages");
 
@@ -32,9 +36,11 @@ function useExampleMessage(event) {
   chat.scrollTop = chat.scrollHeight;
 
   const response = respondToMessage(message);
+
+  // hide the example messages
   document.querySelector("#messages .examples").classList.add("hidden");
 
-  // create answer
+  // create answer based on message
   const answerTextElement = document.createElement("p");
   answerTextElement.innerHTML = response;
 
@@ -42,6 +48,7 @@ function useExampleMessage(event) {
   answerMessageElement.setAttribute("id", "answer-container");
   answerMessageElement.appendChild(answerTextElement);
 
+  // wait to show it to make the chat seem more natural
   setTimeout(() => {
     chat.appendChild(answerMessageElement);
     chat.scrollTop = chat.scrollHeight;
@@ -50,12 +57,15 @@ function useExampleMessage(event) {
   event.preventDefault();
 }
 
+// creates message based on input field and create answer
 function sendMessage(event) {
-  // Message
+  // hide the example messages
   document.querySelector("#messages .examples").classList.add("hidden");
   const messageField = document.querySelector(
     "#astronaut-chat-field form input"
   );
+
+  // create new message
   const chat = document.querySelector("#messages");
 
   const newTextElement = document.createElement("p");
@@ -69,7 +79,7 @@ function sendMessage(event) {
 
   chat.scrollTop = chat.scrollHeight;
 
-  // Answer
+  // get and create answer
   const response = respondToMessage(messageField.value);
   messageField.value = "";
 
@@ -80,6 +90,7 @@ function sendMessage(event) {
   answerMessageElement.setAttribute("id", "answer-container");
   answerMessageElement.appendChild(answerTextElement);
 
+  // wait to show it to make the chat seem more natural
   setTimeout(() => {
     chat.appendChild(answerMessageElement);
     chat.scrollTop = chat.scrollHeight;
@@ -88,9 +99,12 @@ function sendMessage(event) {
   event.preventDefault();
 }
 
+// function that takes in a message, and creates a respons
 function respondToMessage(message) {
+  // default answer
   let answer =
     "I did not understand that. Could you try saying it in another way?";
+  // object (dictionary) with known responses to messages
   const knownResponses = {
     hi: "Hello! Nice to meet you.",
     hello: "Hello! Nice to meet you.",
@@ -103,6 +117,7 @@ function respondToMessage(message) {
       "I have. It is cold, and dark. But also really facinating",
   };
 
+  // if message contains key in dictionary, we have an answer
   for (key in knownResponses) {
     if (message.toLowerCase().includes(key)) {
       answer = knownResponses[key];
@@ -113,6 +128,5 @@ function respondToMessage(message) {
 
 function toggleChat(event) {
   document.querySelector("#astronaut-chat-field").classList.toggle("hidden");
-
   event.preventDefault();
 }
