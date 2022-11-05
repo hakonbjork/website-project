@@ -111,7 +111,7 @@ nav a.current-page:hover {
 
 /* Background space image */
 main {
-  background-image: url("img/space.jpg");
+  background-image: url("../img/space.jpg");
   background-size: 100%;
   background-repeat: repeat-y;
   background-attachment: fixed;
