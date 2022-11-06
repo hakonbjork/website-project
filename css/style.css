@@ -154,6 +154,17 @@ footer section {
 
 /* Classes */
 
+.no-js {
+  border: solid 2px rgb(198, 98, 98);
+  background-color: #364bc390;
+  border-radius: 10px;
+  margin: 10px;
+}
+
+.hidden {
+  display: none;
+}
+
 .flex-article section {
   padding: 3% 4%;
 }
@@ -203,10 +214,6 @@ footer section {
   border-color: red;
 }
 
-.hidden {
-  display: none;
-}
-
 @keyframes color_changing {
   0% {
     background-color: var(--buttonColor);
@@ -228,6 +235,11 @@ footer section {
 
 .change-button:hover {
   background-color: #b64848;
+}
+
+.space-car-container {
+  position: relative;
+  overflow: hidden;
 }
 
 /* IDs */
@@ -346,11 +358,30 @@ footer section {
   border-bottom-right-radius: 10px;
 }
 
-.no-js {
-  border: solid 2px rgb(198, 98, 98);
-  background-color: #364bc390;
-  border-radius: 10px;
-  margin: 10px;
+@keyframes space-car-animation {
+  0% {
+    /* just outside of screen left side */
+    transform: scaleX(-1) translateX(100%);
+    left: 0;
+  }
+  100% {
+    /* just outside of screen right side */
+    transform: scaleX(-1) translateX(0);
+    left: 100vw;
+  }
+}
+
+#space-car {
+  width: 70px;
+  position: absolute;
+  transform: scaleX(-1) translateX(100%);
+  left: 0;
+  top: 0;
+  padding: 0;
+  animation-name: space-car-animation;
+  animation-duration: 6s;
+  animation-delay: 1s;
+  animation-timing-function: linear;
 }
 
 /* Tablet */
@@ -436,6 +467,11 @@ footer section {
     position: absolute;
     width: 300px;
     right: 20px;
+  }
+
+  #space-car {
+    width: 100px;
+    animation-duration: 10s;
   }
 }
 
