@@ -287,6 +287,14 @@ footer section {
   border-radius: 10px;
 }
 
+#no-booking-exist .button-container {
+  height: auto;
+}
+
+#no-booking-exist button {
+  margin-bottom: 30px;
+}
+
 #astronaut-chat-field {
   border-radius: 10px;
   background-color: antiquewhite;
